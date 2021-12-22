@@ -1,12 +1,12 @@
--- Crear taula localitat.
--- Crear taula provincia.
--- Crear taula clients. 
--- Crear taula comandes.
--- Crear taula productes.
--- Crear taula productes-de-comandes.
--- Crear taula categoria pizza.
--- Crear taula botiga.
--- Crear taula empleat.
+-- Crear taula localitat.[x]
+-- Crear taula provincia.[x]
+-- Crear taula clients. [x]
+-- Crear taula comandes.[x]
+-- Crear taula productes.[x]
+-- Crear taula productes-de-comandes.[x]
+-- Crear taula categoria pizza.[x]
+-- Crear taula botiga.[x]
+-- Crear taula empleat.[x]
 
 
 
