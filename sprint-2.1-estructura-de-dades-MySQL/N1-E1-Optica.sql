@@ -91,7 +91,7 @@ VALUES ('Ecomdina Sl.', 'Calle Mayoral', 2, 11, 14, 'Malaga', '29016', 'Espanya'
 -- Afegir valors de prova a la taula ulleres. [x]
 
 INSERT INTO ulleres (marca, graduacio_esquerra, graduacio_dreta, muntura, color_muntura, color_vidres, preu, proveidor_id)
-VALUES ('Rayban', 0.8, 0.3, 'pasta', 'verde', 'negro', 320.99, 2);
+VALUES ('Rayban', 0.8, 0.3, 'pasta', 'verda', 'negro', 320.99, 2);
 
 INSERT INTO ulleres (marca, graduacio_esquerra, graduacio_dreta, muntura, color_muntura, color_vidres, preu, proveidor_id)
 VALUES ('Gucci', 0.1, 0.5, 'flotant', 'verde', 'transparents', 525.95, 1);
