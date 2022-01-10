@@ -1,0 +1,51 @@
+// Esborra la base de dades si existís i la crea de nou.
+use('optica');
+db.dropDatabase();
+use ('optica');
+
+// Creació de col·leccions (Equivalent a taules a MySQL).
+db.createCollection('proveidors');
+db.createCollection('ulleres');
+db.createCollection('clients');
+
+// Inserir camps i valors a la col·lecció de proveïdors.
+db.proveidors.insert(
+    [
+        {
+            id: 0,
+            nom: 'Alco distribucions S.A',
+            adreça: {
+                carrer: 'Carrer de la Glucosa',
+                numero: 16,
+                pis: 0,
+                porta: ' ',
+                ciutat: 'Barcelona',
+                codi_postal: 08032,
+                pais: 'Espanya'
+            },
+            telefon: '+34 687128964',
+            fax: '',
+            NIF: 'A58375890'
+        },
+                {
+            id: 1,
+            nom: 'Ecomdina S.L.',
+            adreça: {
+                carrer: 'Calle Mayoral',
+                numero: 2,
+                pis: 11,
+                porta: 14,
+                ciutat: 'Malaga',
+                codi_postal: 29016,
+                pais: 'Espanya'
+            },
+            telefon: '+34 633322712',
+            fax: ' ',
+            NIF: 'B02768364'
+        },
+    ]
+);
+
+// visualitzar les dades que hem inserit a la col·lecció proveïdors.
+db.proveidors.find().pretty();
+

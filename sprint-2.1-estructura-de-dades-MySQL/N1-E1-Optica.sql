@@ -83,18 +83,18 @@ VALUES ('José', 'Fernández Sánchez');
 -- Afegir valors de prova a la taula proveidors. [x]
 
 INSERT INTO proveidors (nom, carrer, numero, pis, porta, ciutat, codi_postal, pais, telefon, fax, NIF)
-VALUES ('Alco distribucions S.A', 'Carrer de la Glucosa', '16', '0', '', 'Barcelona', '08032', 'Espanya', '+34 687128964', '', 'A58375890');
+VALUES ('Alco distribucions S.A', 'Carrer de la Glucosa', 16, 0, '', 'Barcelona', '08032', 'Espanya', '+34 687128964', '', 'A58375890');
 
 INSERT INTO proveidors (nom, carrer, numero, pis, porta, ciutat, codi_postal, pais, telefon, fax, NIF)
-VALUES ('Ecomdina Sl.', 'Calle Mayoral', '2', '11', '14', 'Malaga', '08032', 'Espanya', '+34 633322712','' , 'B02768364');
+VALUES ('Ecomdina Sl.', 'Calle Mayoral', 2, 11, 14, 'Malaga', '29016', 'Espanya', '+34 633322712','' , 'B02768364');
 
 -- Afegir valors de prova a la taula ulleres. [x]
 
 INSERT INTO ulleres (marca, graduacio_esquerra, graduacio_dreta, muntura, color_muntura, color_vidres, preu, proveidor_id)
-VALUES ('Rayban', '0.8', '0.3', 'pasta', 'verde', 'negro', '320.99', '2');
+VALUES ('Rayban', 0.8, 0.3, 'pasta', 'verde', 'negro', 320.99, 2);
 
 INSERT INTO ulleres (marca, graduacio_esquerra, graduacio_dreta, muntura, color_muntura, color_vidres, preu, proveidor_id)
-VALUES ('Gucci', '0.1', '0.5', 'flotant', 'verde', 'transparents', '525.95', '1');
+VALUES ('Gucci', 0.1, 0.5, 'flotant', 'verde', 'transparents', 525.95, 1);
 
 -- Afegir valors de prova a la taula clients. [x]
 
@@ -102,11 +102,27 @@ INSERT INTO clients (nom, codi_postal, telefon, correu_electronic, data_registre
 VALUES('Margarita', '08010', '679992928', 'margarita@gmail.com', '2021-07-12', NULL);
 
 INSERT INTO clients (nom, codi_postal, telefon, correu_electronic, data_registre, client_recomanat)
-VALUES('Pedro', '08032', '632222975', 'pedro@hotmail.com', '2021-10-30', '1');
+VALUES('Pedro', '08032', '632222975', 'pedro@hotmail.com', '2021-10-30', 1);
 
 -- Afegir valors de prova a la taula factures. [x]
 
 INSERT INTO factures (data_factura, import_factura, proveidor_id, ulleres_id, client_id, empleat_id)
-VALUES ('2021-04-12', '627.25', '2', '1', '1', '2');
+VALUES ('2021-07-12', 627.25, 2, 1, 1, 2);
 INSERT INTO factures (data_factura, import_factura, proveidor_id, ulleres_id, client_id, empleat_id)
-VALUES ('2021-05-01', '627.25', '1', '2', '2', '1');
+VALUES ('2021-09-01', 525.95, 1, 1, 1, 1);
+INSERT INTO factures (data_factura, import_factura, proveidor_id, ulleres_id, client_id, empleat_id)
+VALUES ('2021-09-02', 320.99, 1, 1, 2, 1);
+INSERT INTO factures (data_factura, import_factura, proveidor_id, ulleres_id, client_id, empleat_id)
+VALUES ('2021-09-03', 320.99, 1, 1, 2, 1);
+
+-- Llista el total de factures d'un client en un període determinat.
+
+SELECT c.nom, f.* FROM clients c INNER JOIN factures f ON f.client_id = c.client_id WHERE c.nom = 'Margarita' AND f.data_factura BETWEEN '2021-07-12' AND '2021-12-31';
+
+-- Llista els diferents models d'ulleres que ha venut un empleat durant un any.
+
+SELECT e.nom AS empleat, f.data_factura, u.ulleres_id FROM empleats e INNER JOIN factures f ON e.empleat_id = f.empleat_id INNER JOIN ulleres u ON e.empleat_id = u.ulleres_id WHERE e.empleat_id = 1 AND f.data_factura between '2020-01-01' AND '2021-12-31';
+
+-- Llista els diferents proveïdors que han subministrat ulleres venudes amb èxit per l'òptica.
+
+SELECT p.nom AS Proveidor, COUNT(p.ulleres_id) AS Ventas FROM proveidors p INNER JOIN ulleres u ON u.ulleres_id = p.proveidor_id GROUP BY p.nom;
