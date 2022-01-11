@@ -27,7 +27,7 @@ COMANDOS BÁSICOS:
 ```
 show dbs                                            -   Muestra la base de datos.
 
-use ('nombre de la base')                           -   Usa la base de datos que le     digamos (Si no la encuentra, la creará).
+use ('nombre de la base')                           -   Usa la base de datos que le digamos (Si no la encuentra, la creará).
 
 db.dropDatabase()                                   -   Borra ba lase de datos en la que nos encontremos.
 
