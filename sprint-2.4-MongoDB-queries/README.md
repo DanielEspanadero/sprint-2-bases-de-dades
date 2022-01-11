@@ -1,4 +1,6 @@
-regex:
+# Expresiones regulares en MongoDB
+
+Se utilizan con el comando $regex:
 Proporciona capacidades de expresión regular para cadenas de coincidencia de patrones en consultas. MongoDB utiliza expresiones regulares compatibles con Perl (es decir, "PCRE") versión 8.42 con compatibilidad con UTF-8.
 
 Opciones para usar en expresiones regulares:
