@@ -1,13 +1,13 @@
 # 🧑🏻‍💻 INTRODUCCIÓN A MYSQL
 
 ## 🤷🏻‍♂️ DIFERENCIAS ENTRE SQL Y MYSQL
-<br>
 
 SQL es un lenguaje para operar con bases de datos y MySQL es un sistema de gestión de bases de datos. Es la principal diferencia entre uno y otro. Ambos conceptos están estrechamente ligados: MySQL es un software que gestiona bases de datos cuyo lenguaje de consulta es SQL.
 
 Explicado para dummies, MySQL es un programa con el que creas y gestionas bases de datos (almacenas los datos, los modificas, los eliminas, los consultas, etcétera). SQL es el idioma en el que das las órdenes a MySQL.
+<br>
 
-## ESTRUCTURA DE UNA BASE DE DATOS (COMANDOS BÁSICOS).
+## 📌 ESTRUCTURA DE UNA BASE DE DATOS (COMANDOS BÁSICOS).
 
 Algunos de los comandos más básicos de SQL son:
 
@@ -34,9 +34,9 @@ USE nombre_base;
 Es muy importante que al finalizar un comando de SQL pongamos punto y coma ;.
 
 Una base de datos relacional es, en esencia, un conjunto de tablas (o relaciones) formadas por filas (registros) y columnas (campos); así, cada registro (cada fila) tiene una ID única, denominada clave y las columnas de la tabla contienen los atributos de los datos. Cada registro tiene normalmente un valor para cada atributo, lo que simplifica la creación de relaciones entre los puntos de datos.
-
-## TIPOS DE DATOS
 <br>
+
+## 📌 TIPOS DE DATOS
 
 Después de la fase de diseño de una base de datos, y una vez se ha realizado el paso a tablas del mismo, en necesario crear las tablas correspondientes dentro de la base de datos. Para cada campo de cada una de las tablas, es necesario determinar el tipo de datos que contiene, para de esa forma ajustar el diseño de la base de datos, y conseguir un almacenamiento óptimo con la menor utilización de espacio.
 Los tipos de datos que puede haber en un campo, se pueden agrupar en tres grandes grupos:
@@ -44,9 +44,9 @@ Los tipos de datos que puede haber en un campo, se pueden agrupar en tres grande
 - Tipos numéricos
 - Tipos de Fecha
 - Tipos de Cadena
-
-## TIPOS NUMÉRICOS
 <br>
+
+## 📌 TIPOS NUMÉRICOS
 
 Existen tipos de datos numéricos, que se pueden dividir en dos grandes grupos, los que están en coma flotante (con decimales) y los que no.
 
@@ -76,10 +76,9 @@ Número en coma flotante de precisión doble. Los valores permitidos van desde -
 
 - Decimal, Dec, Numeric:
 Número en coma flotante desempaquetado. El número se almacena como una cadena.
-
-
-## TIPOS DE FECHA
 <br>
+
+## 📌 TIPOS DE FECHA
 
 A la hora de almacenar fechas, hay que tener en cuenta que Mysql no comprueba de una manera estricta si una fecha es válida o no. Simplemente comprueba que el mes esta comprendido entre 0 y 12 y que el día esta comprendido entre 0 y 31.
 
@@ -106,10 +105,9 @@ Almacena una hora. El rango de horas va desde -838 horas, 59 minutos y 59 segund
 
 - Year:
 Almacena un año. El rango de valores permitidos va desde el año 1901 al año 2155. El campo puede tener tamaño dos o tamaño 4 dependiendo de si queremos almacenar el año con dos o cuatro dígitos.
-
-
-## TIPOS DE CADENA
 <br>
+
+## 📌 TIPOS DE CADENA
 
 - Char(n):
 Almacena una cadena de longitud fija. La cadena podrá contener desde 0 a 255 caracteres.
@@ -140,9 +138,9 @@ Campo que puede tener un único valor de una lista que se especifica. El tipo En
 
 - Set:
 Un campo que puede contener ninguno, uno ó varios valores de una lista. La lista puede tener un máximo de 64 valores.
-
-## LLAVES Y OBLIGATORIEDAD
 <br>
+
+## 📌 LLAVES Y OBLIGATORIEDAD
 
 En las bases de datos relacionales, hay una serie de llaves y obligaciones que podemos llevar a cabo para unir tablas o seguir unas normas de estructuración.
 Por un lado tenemos la llave primaria, que es la que vamos a utilizar como referencia para unirla varias tablas.
@@ -157,10 +155,9 @@ UNIQUE
 NOT NULL
 AUTO-INCREMENT
 ```
-
-
-## CREACIÓN DE TABLAS
 <br>
+
+## 📌 CREACIÓN DE TABLAS
 
 Para crear una tabla hay que seguir una serie de normas a la hora de implementar los comandos. 
 
@@ -183,3 +180,20 @@ NIF VARCHAR(60) NOT NULL,
 PRIMARY KEY(proveidor_id)
 );
 ```
+<br>
+
+## 📌 INSERTAR DATOS EN UNA TABLA
+
+Para insertar campos en una tabla lo haremos con el comando de INSERT INTO seguido del nombre de la tabla y, entre parentesis los campos de la tabla nombrada que quedamos añadir. Después añadimos el comando VALUE y entre parentesis los datos que queremos rellenar siguiendo el orden de los campos del parentesis anterior.
+
+Aquí dejo un ejemplo de uno de los ejercicios:
+
+```
+INSERT INTO proveidors (nom, carrer, numero, pis, porta, ciutat, codi_postal, pais, telefon, fax, NIF)
+VALUES ('Alco distribucions S.A', 'Carrer de la Glucosa', 16, 0, '', 'Barcelona', '08032', 'Espanya', '+34 687128964', '', 'A58375890');
+```
+<br>
+
+## 🎥 VÍDEO DONDE RESUELVO EL EJERCICIO DE SPOTIFY Y TODAS LAS QUERIES
+
+https://www.youtube.com/watch?v=Fh0eAzfvPTI
