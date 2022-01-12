@@ -80,7 +80,7 @@ Aquí dejo una lista de los comandos y subcomandos que utilizé para realizar to
         🔸 DESC.                            -   Ordena el resultado de mayor a menor.
 
     🔹 LIMIT.
-    
+
         🔸 OFFSET.                          -   Sirve para omitir varios datos en el LIMIT. 
 ```
 
@@ -116,6 +116,7 @@ En el código superior estamos buscando los clientes cuyo nombre tiene 7 caracte
 SELECT * FROM clientes WHERE nombre LIKE '%a%' or nombre LIKE '%r%' ;
 ```
 En el código superior estamos buscando los clientes cuyo nombre tiene una ‘a’ y una ‘r’.
+<br>
 
 ## 🎥 VÍDEO DONDE RESUELVO EL EJERCICIO DE SPOTIFY Y TODAS LAS QUERIES
 
