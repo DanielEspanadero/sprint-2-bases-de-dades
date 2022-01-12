@@ -9,7 +9,6 @@
 -- Crear taula empleat.[x]
 
 
-
 DROP DATABASE IF EXISTS pizzeria;
 CREATE DATABASE pizzeria;
 USE pizzeria;
@@ -20,7 +19,7 @@ CREATE TABLE provincia(
     PRIMARY KEY(id_provincia)
 );
 
-CREATE TABLE localitat(
+CREATE TABLE localitats(
     id_localitat INT(11) NOT NULL AUTO_INCREMENT,
     nom VARCHAR(45) NOT NULL,
     id_provincia INT(11) NOT NULL,
@@ -37,7 +36,7 @@ CREATE TABLE clients(
     id_localitat INT(11) NOT NULL,
     telefon VARCHAR(45) NOT NULL,
     PRIMARY KEY(id_client),
-    FOREIGN KEY(id_localitat) REFERENCES localitat (id_localitat)
+    FOREIGN KEY(id_localitat) REFERENCES localitats (id_localitat)
 );
 
 CREATE TABLE categoria_pizzes(
@@ -64,7 +63,7 @@ CREATE TABLE botiga(
     codi_postal VARCHAR(25) NOT NULL,
     id_localitat INT(11) NOT NULL,
     PRIMARY KEY(id_botiga),
-    FOREIGN KEY(id_localitat) REFERENCES localitat (id_localitat)
+    FOREIGN KEY(id_localitat) REFERENCES localitats (id_localitat)
 );
 
 CREATE TABLE empleats(
@@ -118,15 +117,15 @@ INSERT INTO provincia (nom) VALUES ('Tarragona');
 INSERT INTO provincia (nom) VALUES ('Lleida');
 INSERT INTO provincia (nom) VALUES ('Girona');
 
-INSERT INTO localitat (nom, id_provincia) VALUES ('Barcelona', 1);
-INSERT INTO localitat (nom, id_provincia) VALUES ('Santa Coloma', 1);
-INSERT INTO localitat (nom, id_provincia) VALUES ('Badalona', 1);
-INSERT INTO localitat (nom, id_provincia) VALUES ('Reus', 2);
-INSERT INTO localitat (nom, id_provincia) VALUES ('Cambrils', 2);
-INSERT INTO localitat (nom, id_provincia) VALUES ('Vilanova de la Barca', 3);
-INSERT INTO localitat (nom, id_provincia) VALUES ('Lleida', 3);
-INSERT INTO localitat (nom, id_provincia) VALUES ('Girona', 4);
-INSERT INTO localitat (nom, id_provincia) VALUES ('Figueres', 4);
+INSERT INTO localitats (nom, id_provincia) VALUES ('Barcelona', 1);
+INSERT INTO localitats (nom, id_provincia) VALUES ('Santa Coloma', 1);
+INSERT INTO localitats (nom, id_provincia) VALUES ('Badalona', 1);
+INSERT INTO localitats (nom, id_provincia) VALUES ('Reus', 2);
+INSERT INTO localitats (nom, id_provincia) VALUES ('Cambrils', 2);
+INSERT INTO localitats (nom, id_provincia) VALUES ('Vilanova de la Barca', 3);
+INSERT INTO localitats (nom, id_provincia) VALUES ('Lleida', 3);
+INSERT INTO localitats (nom, id_provincia) VALUES ('Girona', 4);
+INSERT INTO localitats (nom, id_provincia) VALUES ('Figueres', 4);
 
 INSERT INTO botiga (adreça, codi_postal, id_localitat) VALUES ('Carrer de Valencia, 187', '08022', 1);
 INSERT INTO botiga (adreça, codi_postal, id_localitat) VALUES ('Carrer d`Olot, 12', '17600', 9);
@@ -167,3 +166,15 @@ INSERT INTO comandes (tipus_comanda, preu, id_client, id_botiga, id_empleat) VAL
 INSERT INTO producte_demanat (id_producte, quantitat, id_comanda) VALUES (1, 2, 1);
 INSERT INTO producte_demanat (id_producte, quantitat, id_comanda) VALUES (7, 1, 1);
 INSERT INTO producte_demanat (id_producte, quantitat, id_comanda) VALUES (8, 2, 1);
+
+
+-- Llista quants productes del tipus 'begudes' s'han venut en una determinada localitat
+
+SELECT pd.quantitat, p.nom AS Producte, p.tipus_producte, l.nom AS Localitat FROM producte_demanat pd INNER JOIN productes p ON pd.id_producte_demanat = p.id_producte
+INNER JOIN comandes c ON c.id_comanda = p.id_producte
+INNER JOIN localitats l ON l.id_localitat = p.id_producte WHERE p.tipus_producte = 'beguda' AND l.nom = 'Barcelona';
+
+
+-- Llista quantes comandes ha efectuat un determinat empleat
+
+SELECT e.nom Empleat, COUNT(c.id_comanda) AS Comandes FROM comandes c INNER JOIN empleats e ON c.id_empleat = e.id_empleat WHERE e.nom = 'Marcos';
