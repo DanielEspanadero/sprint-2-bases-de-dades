@@ -1,61 +1,185 @@
-# 💻Sprint 2. Bases de dades💻
-## Entrega 2.1: Estructura de dades MySQL
-</br>
+# 🧑🏻‍💻 INTRODUCCIÓN A MYSQL
 
-## Nivell 1 ⭐
-- Exercici 1 - Òptica:
-Una òptica anomenada Cul d'Ampolla vol informatitzar la gestió dels clients i la venda d'ulleres:
+## 🤷🏻‍♂️ DIFERENCIAS ENTRE SQL Y MYSQL
+<br>
 
-En primer lloc l'òptica vol saber quin és el proveïdor de cadascuna de les ulleres. En concret vol saber de cada proveïdor el nom, l'adreça (carrer, número, pis, porta, ciutat, codi postal i país), telèfon, fax, NIF.
+SQL es un lenguaje para operar con bases de datos y MySQL es un sistema de gestión de bases de datos. Es la principal diferencia entre uno y otro. Ambos conceptos están estrechamente ligados: MySQL es un software que gestiona bases de datos cuyo lenguaje de consulta es SQL.
 
-La política de compres de l'òptica es basa en que les ulleres d'una marca es compraran a un únic proveïdor (així en podrà treure més bons preus), però poden comprar ulleres de diverses marques a un proveïdor. De les ulleres vol saber, la marca, la graduació de cadascun dels vidres, el tipus de muntura (flotant, pasta o metàl·lica), el color de la muntura, el color dels vidres i el preu.
+Explicado para dummies, MySQL es un programa con el que creas y gestionas bases de datos (almacenas los datos, los modificas, los eliminas, los consultas, etcétera). SQL es el idioma en el que das las órdenes a MySQL.
 
-Dels clients vol emmagatzemar el nom, l'adreça postal, el telèfon, el correu electrònic i la data de registre. També ens demanen, quan arriba un client nou, d'emmagatzemar el client que li ha recomanat l'establiment (sempre i quan algú li hagi recomanat). El nostre sistema haurà d’indicar qui ha sigut l’empleat que ha venut cada ullera i quan.
+## ESTRUCTURA DE UNA BASE DE DATOS (COMANDOS BÁSICOS).
 
-- Exerici 2 - Pizzeria:
-Un client t’ha contractat per dissenyar un web que permeti fer comandes de menjar a domicili per Internet:
+Algunos de los comandos más básicos de SQL son:
 
-Tingues en compte les següents indicacions per a modelar com seria la base de dades del projecte: per a cada client emmagatzemem un identificador únic, nom, cognoms, adreça, codi postal, localitat, província i número de telèfon. Les dades de localitat i província estaran emmagatzemats en taules separades. Sabem que una localitat pertany a una única província, i que una província pot tenir moltes localitats. Per cada localitat emmagatzemem un identificador únic i un nom. Per a cada província emmagatzemem un identificador únic i un nom.
+```
+CREATE DATABASE     -   Se utiliza para crear una nueva base de datos vacía.
 
-Un client pot realitzar moltes comandes, però una única comanda només pot ser realitzat per un únic client. De cada comanda s'emmagatzema un identificador únic, data i hora, si la comanda és per a repartiment a domicili o per a recollir en botiga, la quantitat de productes que s'han seleccionat de cada tipus i el preu total. Una comanda pot constar d'un o diversos productes.
+DROP DATABASE       -   Se utiliza para eliminar completamente una base de datos existente.
 
-Els productes poden ser pizzes, hamburgueses i begudes. De cada producte s'emmagatzema: un identificador únic, nom, descripció, imatge i preu. En el cas de les pizzes existeixen diverses categories que poden anar canviant de nom al llarg de l'any. Una pizza només pot estar dins d'una categoria, però una categoria pot tenir moltes pizzes.
+CREATE TABLE        -   Se utiliza para crear una nueva tabla, donde la información se almacena realmente.
 
-De cada categoria s'emmagatzema un identificador únic i un nom. Una comanda és gestionada per una única botiga i una botiga pot gestionar moltes comandes. De cada botiga s'emmagatzema un identificador únic, adreça, codi postal, localitat i província. En una botiga poden treballar molts empleats i un empleat només pot treballar en una botiga. De cada empleat s'emmagatzema un identificador únic, nom, cognoms, nif, telèfon i si treballa com a cuiner o repartidor. Per a les comandes de repartiment a domicili interessa guardar qui és el repartidor que realitza el lliurament de la comanda i la data i hora del moment del lliurament.
+ALTER TABLE         -   Se utiliza para modificar una tabla ya existente.
 
-## Nivell 2 ⭐⭐
-- Exercici 1 - YouTube:
-Provarem de fer un model senzill de com seria la base de dades per a una versió reduïda de YouTube:
+DROP TABLE          -   Se utiliza para eliminar por completo una tabla existente.
+```
 
-De cada usuari guardem un identificador únic, email, password, nom d'usuari, data de naixement, sexe, país, codi postal. Un usuari publica vídeos. De cada vídeo guardem un identificador únic, un títol, una descripció, una grandària, el nom de l'arxiu de vídeo, durada del vídeo, un thumbnail, el nombre de reproduccions, el número de likes, el número de dislikes.
+Así pues los comandos recomendados al inicido de un documento a la hora de estructurar una base de datos SQL ⚠️ SOLO AL ESTRUCTURAR, NO HACER CON QUERIES ⚠️ serian estos:
 
-Un vídeo pot tenir tres estats diferents: públic, ocult i privat. Un vídeo pot tenir moltes etiquetes. Una etiqueta s'identifica per una Identificador únici un nom d'etiqueta. Interessa guardar qui és l'usuari que publica el vídeo i en quina data/hora el fa. Un usuari pot crear un canal. Un canal té un identificador únic, un nom, una descripció i una data de creació. Un usuari es pot subscriure als canals d'altres usuaris. Un usuari pot donar-li un like o un dislike a un vídeo una única vegada. Caldrà portar un registre dels usuaris que li han donat like i dislike a un determinat vídeo i en quina data/hora ho van fer. Un usuari pot crear playlists amb els vídeos que li agraden. Cada playlist té un identificador únic, un nom, una data de creació, i un estat que indica que pot ser pública o privada. Un usuari pot escriure comentaris en un vídeo determinat.
+```
+DROP DATABASE IF EXISTS nombre_base;
+CREATE DATABASE nombre_base;
+USE nombre_base;
+```
 
-Cada comentari està identificat per un identificador únic, el text del comentari i la data/hora en la qual es va realitzar. Un usuari pot marcar un comentari com m'agrada o no m'agrada. Caldrà portar un registre dels usuaris que han marcat un comentari com m'agrada/no m'agrada, i en quina data/hora ho van fer.
+Es muy importante que al finalizar un comando de SQL pongamos punto y coma ;.
 
-## Nivell 3 ⭐⭐⭐
-- Exercici 1 - Spotify:
-Provarem de fer un model senzill de com seria la base de dades necessària per a Spotify:
+Una base de datos relacional es, en esencia, un conjunto de tablas (o relaciones) formadas por filas (registros) y columnas (campos); así, cada registro (cada fila) tiene una ID única, denominada clave y las columnas de la tabla contienen los atributos de los datos. Cada registro tiene normalmente un valor para cada atributo, lo que simplifica la creación de relaciones entre los puntos de datos.
 
-Existeixen dos tipus d'usuaris: usuari free i usuari premium. De cada usuari guardem un identificador únic, email, password, nom d'usuari, data de naixement, sexe, país, codi postal.
+## TIPOS DE DATOS
+<br>
 
-Els usuaris premium realitzen subscripcions. Les dades necessàries que caldrà guardar per a cada subscripció són: data d'inici de la subscripció, data de renovació del servei i una forma de pagament, que pot ser mitjançant targeta de crèdit o PayPal.
+Después de la fase de diseño de una base de datos, y una vez se ha realizado el paso a tablas del mismo, en necesario crear las tablas correspondientes dentro de la base de datos. Para cada campo de cada una de las tablas, es necesario determinar el tipo de datos que contiene, para de esa forma ajustar el diseño de la base de datos, y conseguir un almacenamiento óptimo con la menor utilización de espacio.
+Los tipos de datos que puede haber en un campo, se pueden agrupar en tres grandes grupos:
 
-De les targetes de crèdit guardem el número de targeta, mes i any de caducitat i el codi de seguretat. Dels usuaris que paguen amb PayPal guardem el nom d'usuari de PayPal. Ens interessa portar un registre de tots els pagaments que un usuari premium ha anat realitzant durant el període que està subscrit. De cada pagament es guarda la data, un número d'ordre (que és únic) i un total.
+- Tipos numéricos
+- Tipos de Fecha
+- Tipos de Cadena
 
-Un usuari pot crear moltes playlists. De cada playlist guardem un títol, el nombre de cançons que conté, un identificador únic i una data de creació. Quan un usuari esborra una playlist no s'esborra del sistema, sinó que es marca com que ha estat eliminada. D'aquesta manera l'usuari pot tornar a recuperar els seus playlists en cas que les hagi eliminat per error. És necessari emmagatzemar la data en la qual uneixi playlist ha estat marcada com eliminada.
+## TIPOS NUMÉRICOS
+<br>
 
-Podem dir que existeixen dos tipus de playlists: actives i esborrades. Una playlist que està activa pot ser compartida amb altres usuaris, això vol dir que altres usuaris poden afegir cançons en ella. En una llista compartida ens interessa saber quin usuari ha estat el que ha afegit cada cançó i en quina data ho va fer. Una cançó només pot pertànyer a un únic àlbum. Un àlbum pot contenir moltes cançons. Un àlbum ha estat publicat per un únic artista. Un artista pot haver publicat molts àlbums. De cada cançó guardem un identificador únic, un títol, una durada i el nombre de vegades que ha estat reproduïda pels usuaris de Spotify.
+Existen tipos de datos numéricos, que se pueden dividir en dos grandes grupos, los que están en coma flotante (con decimales) y los que no.
 
-De cada àlbum guardem un identificador únic, títol, any de publicació i una imatge amb la portada. De cada artista guardem un identificador únic, nom i una imatge de l'artista. Un usuari pot seguir a molts artistes. Un artista pot estar relacionat amb altres artistes que facin música semblant. De manera que Spotify pugui mostrar-nos un llistat d'artistes relacionats amb els artistes que ens agraden. També ens interessa guardar quins són els àlbums i les cançons favorites d'un usuari. Un usuari pot seleccionar molts àlbums i moltes cançons com a favorites. 
+- TinyInt:
+Es un número entero con o sin signo. Con signo el rango de valores válidos va desde -128 a 127. Sin signo, el rango de valores es de 0 a 255
 
-Per verificar el teu disseny, omple les taules amb dades de prova per tal de verificar que les relacions són correctes i efectua les següents consultes i comprova'n els resultats:
+- Bit ó Bool:
+Un número entero que puede ser 0 ó 1
 
-Optica:
+- SmallInt:
+Número entero con o sin signo. Con signo el rango de valores va desde -32768 a 32767. Sin signo, el rango de valores es de 0 a 65535.
 
-Llista el total de factures d'un client en un període determinat
-Llista els diferents models d'ulleres que ha venut un empleat durant un any
-Llista els diferents proveïdors que han subministrat ulleres venudes amb èxit per l'òptica
-Pizzeria:
-Llista quants productes de la categoria 'begudes' s'han venut en una determinada localitat
-Llista quantes comandes ha efectuat un determinat empleat
+- MediumInt:
+Número entero con o sin signo. Con signo el rango de valores va desde -8.388.608 a 8.388.607. Sin signo el rango va desde 0 a16777215.
+
+- Integer, Int:
+Número entero con o sin signo. Con signo el rango de valores va desde -2147483648 a 2147483647. Sin signo el rango va desde 0 a 429.4967.295
+
+- BigInt:
+Número entero con o sin signo. Con signo el rango de valores va desde -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807. Sin signo el rango va desde 0 a 18.446.744.073.709.551.615.
+
+- Float:
+Número pequeño en coma flotante de precisión simple. Los valores válidos van desde -3.402823466E+38 a -1.175494351E-38, 0 y desde 1.175494351E-38 a 3.402823466E+38.
+
+- xReal, Double:
+Número en coma flotante de precisión doble. Los valores permitidos van desde -1.7976931348623157E+308 a -2.2250738585072014E-308, 0 y desde 2.2250738585072014E-308 a 1.7976931348623157E+308
+
+- Decimal, Dec, Numeric:
+Número en coma flotante desempaquetado. El número se almacena como una cadena.
+
+
+## TIPOS DE FECHA
+<br>
+
+A la hora de almacenar fechas, hay que tener en cuenta que Mysql no comprueba de una manera estricta si una fecha es válida o no. Simplemente comprueba que el mes esta comprendido entre 0 y 12 y que el día esta comprendido entre 0 y 31.
+
+- Date:
+Tipo fecha, almacena una fecha. El rango de valores va desde el 1 de enero del 1001 al 31 de diciembre de 9999. El formato de almacenamiento es de año-mes-dia
+
+- DateTime:
+Combinación de fecha y hora. El rango de valores va desde el 1 de enero del 1001 a las 0 horas, 0 minutos y 0 segundos al 31 de diciembre del 9999 a las 23 horas, 59 minutos y 59 segundos. El formato de almacenamiento es de año-mes-dia horas:minutos:segundos
+
+- TimeStamp:
+Combinación de fecha y hora. El rango va desde el 1 de enero de 1970 al año 2037. El formato de almacenamiento depende del tamaño del campo:
+
+```
+14      -   AñoMesDiaHoraMinutoSegundo aaaammddhhmmss.
+12      -   AñoMesDiaHoraMinutoSegundo aammddhhmmss.
+8       -   AñoMesDia aaaammdd.
+6       -   AñoMesDia aammdd.
+4       -   AñoMes aamm.
+2       -   Año aa.
+```
+
+- Time:
+Almacena una hora. El rango de horas va desde -838 horas, 59 minutos y 59 segundos a 838, 59 minutos y 59 segundos. El formato de almacenamiento es de 'HH:MM:SS'
+
+- Year:
+Almacena un año. El rango de valores permitidos va desde el año 1901 al año 2155. El campo puede tener tamaño dos o tamaño 4 dependiendo de si queremos almacenar el año con dos o cuatro dígitos.
+
+
+## TIPOS DE CADENA
+<br>
+
+- Char(n):
+Almacena una cadena de longitud fija. La cadena podrá contener desde 0 a 255 caracteres.
+
+- VarChar(n):
+Almacena una cadena de longitud variable. La cadena podrá contener desde 0 a 255 caracteres.
+
+Dentro de los tipos de cadena se pueden distinguir otros dos subtipos, los tipo Test y los tipo BLOB (Binary large Object)
+
+La diferencia entre un tipo y otro es el tratamiento que reciben a la hora de realizar ordenamientos y comparaciones. Mientras que el tipo test se ordena sin tener en cuenta las Mayúsculas y las minúsculas, el tipo BLOB se ordena teniéndolas en cuenta.
+
+Los tipos BLOB se utilizan para almacenar datos binarios como pueden ser ficheros.
+
+- TinyText y TinyBlob:
+Columna con una longitud máxima de 255 caracteres.
+
+- Blob y Text:
+Un texto con un máximo de 65535 caracteres.
+
+- MediumBlob y MediumText:
+Un texto con un máximo de 16.777.215 caracteres.
+
+- LongBlob y LongText:
+Un texto con un máximo de caracteres 4.294.967.295. Hay que tener en cuenta que debido a los protocolos de comunicación los paquetes pueden tener un máximo de 16 Mb.
+
+- Enum:
+Campo que puede tener un único valor de una lista que se especifica. El tipo Enum acepta hasta 65535 valores distintos
+
+- Set:
+Un campo que puede contener ninguno, uno ó varios valores de una lista. La lista puede tener un máximo de 64 valores.
+
+## LLAVES Y OBLIGATORIEDAD
+<br>
+
+En las bases de datos relacionales, hay una serie de llaves y obligaciones que podemos llevar a cabo para unir tablas o seguir unas normas de estructuración.
+Por un lado tenemos la llave primaria, que es la que vamos a utilizar como referencia para unirla varias tablas.
+Luego tenemos la llave foranea, que es la que vamos a usar para enlazar el campo de una tabla con la llave primaria de otra tabla.
+Unique se utiliza para campos que no se pueden repetir (Por ejemplo un DNI, un correo electronico...).
+Auto-Increment sirve para aumentar en orden los campos de una tabla según vayan aumentando los registros (Solo pueden ser utilizados en llaves primarias).
+
+```
+PRIMARY KEY (nombre)
+FOREIGN KEY (nombre) REFERENCES nombre_tabla (nombre)
+UNIQUE
+NOT NULL
+AUTO-INCREMENT
+```
+
+
+## CREACIÓN DE TABLAS
+<br>
+
+Para crear una tabla hay que seguir una serie de normas a la hora de implementar los comandos. 
+
+Aquí dejo un ejemplo de uno de los ejercicios realizados:
+
+```
+CREATE TABLE proveidors(
+proveidor_id INT(11) NOT NULL AUTO_INCREMENT,
+nom VARCHAR(60) NOT NULL,
+carrer VARCHAR(60) NOT NULL,
+numero INT(4) NOT NULL,
+pis INT(3),
+porta VARCHAR(11),
+ciutat VARCHAR(30) NOT NULL,
+codi_postal INT(10) NOT NULL,
+pais VARCHAR(20) NOT NULL,
+telefon VARCHAR(15) NOT NULL,
+fax VARCHAR(20),
+NIF VARCHAR(60) NOT NULL,
+PRIMARY KEY(proveidor_id)
+);
+```

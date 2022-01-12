@@ -1,7 +1,7 @@
-# MONGODB QUERIES
+# 🧑🏻‍💻 MONGODB QUERIES
 <br>
 
-## Conceptos básicos para realizar queries
+## 📌 Conceptos básicos para realizar queries
 <br>
 
 El comando que siempre vamos a utilizar para realizar queries en MongoDB es .find(), que sería el equivalente al SELECT en SQL.
@@ -32,7 +32,7 @@ db.nombreCol.find({age: 42}).limit(1).skip(2)   -   Devuelve un campo con ese va
 
 ```
 
-## Proyecciones
+## 📌 Proyecciones
 <br>
 
 Una proyección se utiliza para devolver un conjunto determinado de campos de un documento. En los ejemplos anteriores, estábamos devolviendo todos los campos de un documento, pero es posible que no necesitemos todos. Es decir, que en lugar de hacer un SELECT *, realizaremos un SELECT nombrecampo. Las proyecciones se tienen que incorporar en el segundo parámetro del comando .find(). Las proyecciones se realizan indicando el nombre del campo, añadiendo un 1 si queremos mostrarlo y un 0 si no queremos.
@@ -54,14 +54,14 @@ En este caso estamos aplicando un filtro vacío (se devuelven todos los document
 ```
 
 
-## Operadores de consulta
+## 📌 Operadores de consulta
 <br>
 
 Existen direfentes tipos de operadores para realizar consultan, entre ellos estan los operadores de comparación, lógicos, de elemento, de evaluación, geoespaciales, de formación, bit a bit, de proyección y misceláneos.
 A continuación los veremos más detalladamente.
 
 
-## Operadores de comparación
+## 📌 Operadores de comparación
 <br>
 
 Los operadores de comparación se usan en filtros que, en vez de pasar únicamente un valor, pasan un nuevo documento que contiene las comparaciones a realizar. Por ejemplo, en vez de expresar { "edad": 19 } para obtener las personas cuya edad sea exactamente 19, indico un objeto { "edad" : {$gt: 19} } para expresar las personas cuya edad sea mayor que 19.
@@ -85,7 +85,7 @@ $nin            -   No coincide con ninguno de los valores especificados en una 
 ```
 
 
-## Operadores lógicos
+## 📌 Operadores lógicos
 <br>
 
 Los operadores lógicos permiten realizar filtrados atendiendo a varias condiciones:
@@ -97,7 +97,7 @@ $and            -   Similar a $or, pero en este caso los documentos deben cumpli
 ```
 
 
-## Operadores de elemento
+## 📌 Operadores de elemento
 <br>
 
 ```
@@ -107,7 +107,7 @@ $type           -   Selecciona documentos si un campo es del tipo especificado.
 ```
 
 
-## Operadores de evaluación
+## 📌 Operadores de evaluación
 <br>
 
 ```
@@ -125,7 +125,7 @@ $where          -   Coincide con documentos que satisfacen una expresión de Jav
 ```
 
 
-## Operadores geoespaciales
+## 📌 Operadores geoespaciales
 <br>
 
 ```
@@ -139,7 +139,7 @@ $nearSphere         -   Devuelve objetos geoespaciales en la proximidad de un pu
 ```
 
 
-## Operadores de formación
+## 📌 Operadores de formación
 <br>
 
 ```
@@ -151,7 +151,7 @@ $size               -   Selecciona documentos si el campo de matriz tiene un tam
 ```
 
 
-## Operadores bit a bit
+## 📌 Operadores bit a bit
 <br>
 
 ```
@@ -165,7 +165,7 @@ $bitsAnySet         -   Coincide con valores numéricos o binarios en los que cu
 ```
 
 
-## Operadores de proyección
+## 📌 Operadores de proyección
 <br>
 
 ```
@@ -179,7 +179,7 @@ $slice          -   Limita el número de elementos proyectados desde una matriz.
 ```
 
 
-## Operadores misceláneos
+## 📌 Operadores misceláneos
 <br>
 
 ```
@@ -189,7 +189,7 @@ $rand           -   Genera un flotante aleatorio entre 0 y 1.
 ```
 
 
-## Expresiones regulares en MongoDB
+## 📌 Expresiones regulares en MongoDB
 
 Se utilizan con el operador $regex:
 Proporciona capacidades de expresión regular para cadenas de coincidencia de patrones en consultas. MongoDB utiliza expresiones regulares compatibles con Perl (es decir, "PCRE") versión 8.42 con compatibilidad con UTF-8.
