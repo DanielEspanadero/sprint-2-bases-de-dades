@@ -52,11 +52,13 @@ Aquí dejo una lista de los comandos y subcomandos que utilizé para realizar to
         🔸 SUBSTR (Columna, 1, 2).          -   Extrae una subcadena de una cadena. el primer número indica la posición de comienzo y el segundo número los caracteres que se extraen.
 
     🔹 FROM.
+    
     🔹 JOIN, INNER JOIN, LEFT JOIN, RIGHT JOIN.
 
         🔸 ON.                              -   Sirve para unir los campos y valores de las llaves primarias de diferentes tablas.
 
     🔹 WHERE.
+
         🔸 AND.                             -   Sirve para añadir una segunda condición al WHERE.
 
         🔸 IN.                              -   Determina si un valor coincide con cualquier valor en una lista de valores.
