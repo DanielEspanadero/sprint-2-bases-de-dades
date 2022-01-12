@@ -76,8 +76,11 @@ Aquí dejo una lista de los comandos y subcomandos que utilizé para realizar to
     🔹 ORDER BY.
 
         🔸 ASC.                             -   Ordena el resultado de menor a mayor.
+
         🔸 DESC.                            -   Ordena el resultado de mayor a menor.
+
     🔹 LIMIT.
+    
         🔸 OFFSET.                          -   Sirve para omitir varios datos en el LIMIT. 
 ```
 
