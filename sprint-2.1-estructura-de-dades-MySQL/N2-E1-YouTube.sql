@@ -6,8 +6,10 @@ CREATE TABLE usuaris(
     usuari_id INT(11) NOT NULL AUTO_INCREMENT,
     email VARCHAR(45) NOT NULL,
     contrasenya VARCHAR(45) NOT NULL,
-    nom_usuari VARCHAR(20) NOT NULL,
     data_naixement DATE,
+    nom_usuari VARCHAR(20) NOT NULL,
+    descripcio_canal VARCHAR(300),
+    data_de_creacio TIMESTAMP,
     sexe ENUM('masculi', 'femeni'),
     pais VARCHAR(45),
     codi_postal INT(11),
@@ -47,23 +49,11 @@ CREATE TABLE asignacio_etiquetes(
     FOREIGN KEY(id_video) REFERENCES videos (video_id)
 );
 
-CREATE TABLE canals(
-    canal_id INT(11) NOT NULL AUTO_INCREMENT,
-    nom VARCHAR(30) NOT NULL,
-    descripcio VARCHAR(300),
-    data_de_creacio TIMESTAMP,
-    id_usuari INT(11) NOT NULL,
-    PRIMARY KEY(canal_id),
-    FOREIGN KEY(id_usuari) REFERENCES usuaris (usuari_id)
-);
-
 CREATE TABLE suscripcio(
     suscripcio_id INT(11) NOT NULL AUTO_INCREMENT,
     id_usuari INT(11) NOT NULL,
-    id_canal INT(11) NOT NULL,
     PRIMARY KEY(suscripcio_id),
-    FOREIGN KEY(id_usuari) REFERENCES usuaris (usuari_id),
-    FOREIGN KEY(id_canal) REFERENCES canals (canal_id)
+    FOREIGN KEY(id_usuari) REFERENCES usuaris (usuari_id)
 );
 
 CREATE TABLE like_dislike_video(

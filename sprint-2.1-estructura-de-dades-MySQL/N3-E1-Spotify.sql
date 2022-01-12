@@ -12,46 +12,32 @@ CREATE TABLE usuaris(
     codi_postal INT(11) NOT NULL,
     PRIMARY KEY(usuari_id)
 );
-CREATE TABLE usuaris_premium(
-    usuari_premium_id INT(11) NOT NULL AUTO_INCREMENT,
-    id_usuari INT(11) NOT NULL,
-    PRIMARY KEY(usuari_premium_id),
-    FOREIGN KEY(id_usuari) REFERENCES usuaris (usuari_id)
-);
 CREATE TABLE suscripcions_premium(
     suscripcio_premium_id INT(11) NOT NULL AUTO_INCREMENT,
-    id_usuari_premium INT(11) NOT NULL,
     data_inici_suscripcio DATE NOT NULL,
     data_renovacio_servei DATE NOT NULL,
     forma_pagament ENUM('targeta', 'paypal'),
+    data_pagament DATETIME NOT NULL,
+    total_pagaments DECIMAL(10,2) NOT NULL,
+    id_usuari INT(11) NOT NULL,
     PRIMARY KEY(suscripcio_premium_id),
-    FOREIGN KEY(id_usuari_premium) REFERENCES usuaris_premium (usuari_premium_id)
+    FOREIGN KEY(id_usuari) REFERENCES usuaris (usuari_id)
 );
 CREATE TABLE targetes(
     targeta_id INT(11) NOT NULL AUTO_INCREMENT,
-    id_usuaris_premium INT(11) NOT NULL,
+    id_suscripcio_premium INT(11) NOT NULL,
     nombre_targeta INT(16) NOT NULL,
     mes_i_any DATE NOT NULL,
     codi_seguretat INT(3) NOT NULL,
     PRIMARY KEY(targeta_id),
-    FOREIGN KEY(id_usuaris_premium) REFERENCES usuaris_premium (usuari_premium_id)
+    FOREIGN KEY(id_suscripcio_premium) REFERENCES suscripcions_premium (suscripcio_premium_id)
 );
 CREATE TABLE paypal(
     paypal_id INT(11) NOT NULL AUTO_INCREMENT,
-    id_usuari_premium INT(11) NOT NULL,
+    id_suscripcio_premium INT(11) NOT NULL,
     nom_usuari_paypal VARCHAR(30) NOT NULL,
     PRIMARY KEY(paypal_id),
-    FOREIGN KEY(id_usuari_premium) REFERENCES usuaris_premium (usuari_premium_id)
-);
-CREATE TABLE registre_pagament(
-    registre_pagament_id INT(11) NOT NULL AUTO_INCREMENT,
-    id_targeta INT(11) NOT NULL,
-    id_paypal INT(11) NOT NULL,
-    data_pagament DATETIME NOT NULL,
-    total_pagaments DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY(registre_pagament_id),
-    FOREIGN KEY(id_targeta) REFERENCES targetes (targeta_id),
-    FOREIGN KEY(id_paypal) REFERENCES paypal (paypal_id)
+    FOREIGN KEY(id_suscripcio_premium) REFERENCES suscripcions_premium (suscripcio_premium_id)
 );
 CREATE TABLE playlist_activa(
     playlist_id INT(11) NOT NULL AUTO_INCREMENT,
