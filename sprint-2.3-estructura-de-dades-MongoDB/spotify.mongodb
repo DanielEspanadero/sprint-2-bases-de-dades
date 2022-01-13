@@ -10,3 +10,54 @@ db.createCollection('playlists');
 db.createCollection('albums');
 db.createCollection('artistes');
 db.createCollection('cançons');
+
+// Inserir camps i valors a la col·lecció d'usuaris.
+db.usuaris.insertMany(
+    [
+        {
+            id: 0,
+            email: 'abcd@gmail.com',
+            password: '1234',
+            nom_usuari: 'jaimito123',
+            data_naixement: '1990-10-23',
+            sexe: 'home',
+            pais: 'espanya',
+            codi_postal: 08032,
+            rol: 'premium',
+            pagament: {
+                targeta: {
+                    numero: '1234 5678 9012 3456',
+                    mes_i_any: '05/23',
+                    cvv: 192
+                }
+            }
+        },
+        {
+            id: 1,
+            email: 'josefina@gmail.com',
+            password: '4321',
+            nom_usuari: 'josefina1234',
+            data_naixement: '1985-11-30',
+            sexe: 'dona',
+            pais: 'espanya',
+            codi_postal: 08010,
+            rol: 'premium',
+            pagament:{
+                paypal:{
+                    usuari: 'josefina@gmail.com'
+                }
+            }
+        },
+        {
+            id: 2,
+            email: 'alberto@gmail.com',
+            password: '12345678',
+            nom_usuari: 'albertito',
+            data_naixement: '2002-01-10',
+            sexe: 'home',
+            pais: 'espanya',
+            codi_postal: 08014,
+            rol: 'free'
+        }
+    ]
+);
