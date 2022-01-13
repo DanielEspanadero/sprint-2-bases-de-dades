@@ -5,10 +5,10 @@ use('spotify');
 
 // Creació de col·leccions (Equivalent a taules a MySQL).
 db.createCollection('usuaris');
-db.createCollection('suscripcions');
+db.createCollection('pagaments');
 db.createCollection('playlists');
-db.createCollection('albums');
 db.createCollection('artistes');
+db.createCollection('albums');
 db.createCollection('cançons');
 
 // Inserir camps i valors a la col·lecció d'usuaris.
@@ -58,6 +58,226 @@ db.usuaris.insertMany(
             pais: 'espanya',
             codi_postal: 08014,
             rol: 'free'
+        }
+    ]
+);
+
+// Inserir camps i valors a la col·lecció d'pagaments.
+db.pagaments.insertMany(
+    [
+        {
+            id: 0,
+            data: ISODate('2022-01-01'),
+            ordre: '1234',
+            total: 9.99,
+            usuari_id: {
+                $ref: 'usuaris',
+                $id: 0
+            }
+        },
+        {
+            id: 1,
+            data: ISODate('2022-01-01'),
+            ordre: '1235',
+            total: 9.99,
+            usuari_id: {
+                $ref: 'usuaris',
+                $id: 1
+            }
+        }
+    ]
+);
+
+// Inserir camps i valors a la col·lecció d'artistes.
+db.artistes.insertMany(
+    [
+        {
+            id: 0,
+            nom: 'Drake',
+            imatge: 'https://estaticos-cdn.prensaiberica.es/clip/ca650b1b-ef0b-472a-a083-7aa700a77ee8_16-9-discover-aspect-ratio_default_1112295.jpg',
+            artista_relacionat: {
+                $ref: 'artistes',
+                $id: 1
+            }
+        },
+        {
+            id: 1,
+            nom: 'Nicki Nicole',
+            imatge: 'https://i.scdn.co/image/ab67616d0000b27319f7055ea11fba4868f7794a',
+            artista_relacionat: {
+                $ref: 'artistes',
+                $id: 0
+            }
+        }
+    ]
+);
+
+// Inserir camps i valors a la col·lecció d'albums.
+db.albums.insertMany(
+    [
+        {
+            id: 0,
+            titol: 'Scorpion',
+            any_publicacio: 2018,
+            portada: 'https://img.discogs.com/pzxOpyTk5Nx8r4zDJfX1dWk-q7w=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-12800480-1542281217-8075.jpeg.jpg',
+            artista_id: {
+                $ref: 'artistes',
+                $id: 0
+            },
+            likes: [
+                {
+                    $ref: 'usuaris',
+                    $id: 0
+                },
+                {
+                    $ref: 'usuaris',
+                    $id: 1
+                }
+            ]
+        },
+        {
+            id: 1,
+            titol: 'Recuerdos',
+            any_publicacio: 2019,
+            portada: 'https://img.discogs.com/1LnpGFuMY4TCxcpG270Q7xj8v6E=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-15467542-1592012194-2117.jpeg.jpg',
+            artista: {
+                $ref: 'artistes',
+                $id: 1
+            },
+            likes: [
+                {
+                    $ref: 'usuaris',
+                    $id: 0
+                },
+                {
+                    $ref: 'usuaris',
+                    $id: 1
+                }
+            ]
+        }
+    ]
+);
+
+// Inserir camps i valors a la col·lecció de cançons.
+db.cançons.insertMany(
+    [
+        {
+            id: 0,
+            titol: 'Canço 1',
+            durada: '4 minuts i 30 segons',
+            reproduccions: 1927876,
+            album: {
+                $ref: 'albums',
+                $id:0
+            },
+            likes: [
+                {
+                    $ref: 'usuaris',
+                    $id: 0
+                },
+                {
+                    $ref: 'usuaris',
+                    $id: 1
+                }
+            ]
+        },
+        {
+            id: 2,
+            titol: 'Canço 1',
+            durada: '1 minuts i 30 segons',
+            reproduccions: 1000123,
+            album: {
+                $ref: 'albums',
+                $id:0
+            },
+            likes: [
+                {
+                    $ref: 'usuaris',
+                    $id: 0
+                },
+                {
+                    $ref: 'usuaris',
+                    $id: 1
+                }
+            ]
+        },
+        {
+            id: 3,
+            titol: 'Canço 1',
+            durada: '2 minuts i 30 segons',
+            reproduccions: 1927876,
+            album: {
+                $ref: 'albums',
+                $id:1
+            },
+            likes: [
+                {
+                    $ref: 'usuaris',
+                    $id: 0
+                },
+                {
+                    $ref: 'usuaris',
+                    $id: 1
+                }
+            ]
+        },
+        {
+            id: 4,
+            titol: 'Canço 2',
+            durada: '4 minuts i 30 segons',
+            reproduccions: 1927876,
+            album: {
+                $ref: 'albums',
+                $id:1
+            },
+            likes: [
+                {
+                    $ref: 'usuaris',
+                    $id: 0
+                },
+                {
+                    $ref: 'usuaris',
+                    $id: 1
+                }
+            ]
+        },
+    ]
+);
+
+// Inserir camps i valors a la col·lecció de playlist.
+db.playlists.insertMany(
+    [
+        {
+            id: 0,
+            titol: 'Cançons que m`agraden',
+            camçons: [
+                {
+                    canço: {
+                        $ref: 'cançons',
+                        $id: 0
+                    },
+                    usuari: { // Persona que ha añadido la canción a la playlist.
+                        $ref: 'usuaris',
+                        $id: 0
+                    }
+                },
+                {
+                    canço: {
+                        $ref: 'cançons',
+                        $id: 4
+                    },
+                    usuari: { // Persona que ha añadido la canción a la playlist.
+                        $ref: 'usuaris',
+                        $id: 2
+                    }
+                }
+            ],
+            data_creacio: ISODate('2022-01-12'),
+            rol: 'activa',
+            usuari: { // Autor de la playlist.
+                $ref: 'usuaris',
+                $id: 0
+            }
         }
     ]
 );
