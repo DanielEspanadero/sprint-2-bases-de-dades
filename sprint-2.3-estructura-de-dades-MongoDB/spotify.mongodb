@@ -1,0 +1,12 @@
+// Esborra la base de dades si existís i la crea de nou.
+use('spotify');
+db.dropDatabase();
+use('spotify');
+
+// Creació de col·leccions (Equivalent a taules a MySQL).
+db.createCollection('usuaris');
+db.createCollection('suscripcions');
+db.createCollection('playlists');
+db.createCollection('albums');
+db.createCollection('artistes');
+db.createCollection('cançons');
