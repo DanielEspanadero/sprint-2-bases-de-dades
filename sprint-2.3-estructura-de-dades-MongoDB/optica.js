@@ -1,7 +1,7 @@
 // Esborra la base de dades si existís i la crea de nou.
-use('optica');
+db = db.getSiblingDB('optica');
 db.dropDatabase();
-use ('optica');
+db = db.getSiblingDB('optica');
 
 // Creació de col·leccions (Equivalent a taules a MySQL).
 db.createCollection('proveidors');
@@ -58,21 +58,21 @@ db.clients.insertMany(
             telefon: '+34 679992928',
             correu_electronic: 'margarita@gmail.com',
             data_registre: '2021-07-12',
-            ulleres:    
-                    {
+            ulleres:
+            {
                 marca: 'Rayban',
                 graduacio: {
-                    vidre_esquerre:{
+                    vidre_esquerre: {
                         graduacio: 0.8,
                         color: 'negro'
                     },
-                    vidre_dret:{
+                    vidre_dret: {
                         graduacio: 0.3,
                         color: 'negro'
                     }
                 },
                 muntura: {
-                    ENUM: ['flotant', 'pasta' , 'metàl·lica'],
+                    ENUM: ['flotant', 'pasta', 'metàl·lica'],
                     default: 'pasta'
                 },
                 color_muntura: 'verda',
@@ -98,21 +98,21 @@ db.clients.insertMany(
                 $ref: 'clients',
                 $id: 0
             },
-            ulleres:    
-                {
+            ulleres:
+            {
                 marca: 'Gucci',
                 graduacio: {
-                    vidre_esquerre:{
+                    vidre_esquerre: {
                         graduacio: 0.1,
                         color: 'trasparent'
                     },
-                    vidre_dret:{
+                    vidre_dret: {
                         graduacio: 0.5,
                         color: 'trasparent'
                     }
                 },
                 muntura: {
-                    ENUM: ['flotant', 'pasta' , 'metàl·lica'],
+                    ENUM: ['flotant', 'pasta', 'metàl·lica'],
                     default: 'pasta'
                 },
                 color_muntura: 'verda',

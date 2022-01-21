@@ -1,7 +1,7 @@
 // Esborra la base de dades si existís i la crea de nou.
-use('pizzeria');
+db = db.getSiblingDB('pizzeria');
 db.dropDatabase();
-use('pizzeria');
+db = db.getSiblingDB('pizzeria');
 
 // Creació de col·leccions (Equivalent a taules a MySQL).
 db.createCollection('clients');
@@ -109,7 +109,7 @@ db.botigues.insertMany(
                     }]
                 }
             ]
-                
+
         },
         {
             id: 1,

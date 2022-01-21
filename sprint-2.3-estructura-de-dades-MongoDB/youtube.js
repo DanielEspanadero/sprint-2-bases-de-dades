@@ -1,7 +1,7 @@
 // Esborra la base de dades si existís i la crea de nou.
-use('youtube');
+db = db.getSiblingDB('youtube');
 db.dropDatabase();
-use('youtube');
+db = db.getSiblingDB('youtube');
 
 // Creació de col·leccions (Equivalent a taules a MySQL).
 db.createCollection('usuaris');

@@ -1,7 +1,7 @@
 // Esborra la base de dades si existís i la crea de nou.
-use('spotify');
+db = db.getSiblingDB('spotify');
 db.dropDatabase();
-use('spotify');
+db = db.getSiblingDB('spotify');
 
 // Creació de col·leccions (Equivalent a taules a MySQL).
 db.createCollection('usuaris');
@@ -22,7 +22,7 @@ db.usuaris.insertMany(
             codi_postal: 08032,
             rol: 'premium',
             pagament: {
-                id:0,
+                id: 0,
                 targeta: {
                     numero: '1234 5678 9012 3456',
                     mes_i_any: '05/23',
@@ -44,7 +44,7 @@ db.usuaris.insertMany(
             codi_postal: 08010,
             rol: 'premium',
             pagament: {
-                id:0,
+                id: 0,
                 paypal: {
                     usuari: 'josefina@gmail.com'
                 },
